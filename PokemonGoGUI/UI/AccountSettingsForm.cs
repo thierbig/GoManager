@@ -65,6 +65,8 @@ namespace PokemonGoGUI.UI
 
         private void AccountSettingsForm_Load(object sender, EventArgs e)
         {
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+
             foreach (AccountState state in Enum.GetValues(typeof(AccountState)))
             {
                 if(state == AccountState.Good)
@@ -672,7 +674,9 @@ namespace PokemonGoGUI.UI
         {
             _manager.RandomDeviceId();
 
-            UpdateDetails(_manager.UserSettings);
+            textBoxDeviceId.Text = _manager.UserSettings.DeviceId;
+
+            //UpdateDetails(_manager.UserSettings);
         }
 
         private void buttonResetDefaults_Click(object sender, EventArgs e)
